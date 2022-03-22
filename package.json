@@ -1,0 +1,19 @@
+{
+  "name": "folder-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "type": "module",
+  "engines": {
+    "node": "17.3.1",
+    "npm": "8.3.0"
+  },
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "author": "Xavi Giménez Sánchez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
