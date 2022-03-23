@@ -1,8 +1,8 @@
 import { useState, useEffect, MouseEvent } from "react";
 import uniqueId from "lodash.uniqueid";
+import { Arrow, File, Image } from "../Icons";
+import { isImage } from "../../utils";
 import * as Axios from "axios";
-import Arrow from "../Arrow";
-import File from "../File";
 
 const axios = Axios.default;
 interface IINode {
@@ -40,7 +40,7 @@ const INode = ({ path }: IINode) => {
           }
         >
           {node.isDirectory && <Arrow open={node.open} />}
-          {!node.isDirectory && <File />}
+          {!node.isDirectory && (isImage(node.name) ? <Image /> : <File />)}
           <div key={`inode-name-${node.id}`}>{node.name}</div>
           {node.open && <INode path={`${path}${node.name}/`} />}
         </div>

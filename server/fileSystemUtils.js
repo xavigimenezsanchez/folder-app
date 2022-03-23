@@ -1,4 +1,4 @@
-import { join, resolve } from "path";
+import { join, resolve, extname } from "path";
 import { readdir, statSync } from "fs";
 const __dirname = resolve();
 var exposedFileSystem = join(__dirname, "exposedFileSystem");
@@ -15,6 +15,7 @@ export const dir = (req, res) => {
       files.forEach((file) => {
         filesStructure.push({
           name: file,
+          extname: extname(file),
           isDirectory: statSync(fileSystemPath + file).isDirectory(),
         });
       });
