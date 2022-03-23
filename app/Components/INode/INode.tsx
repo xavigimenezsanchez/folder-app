@@ -2,6 +2,7 @@ import { useState, useEffect, MouseEvent } from "react";
 import uniqueId from "lodash.uniqueid";
 import * as Axios from "axios";
 import Arrow from "../Arrow";
+import File from "../File";
 
 const axios = Axios.default;
 interface IINode {
@@ -39,6 +40,7 @@ const INode = ({ path }: IINode) => {
           }
         >
           {node.isDirectory && <Arrow open={node.open} />}
+          {!node.isDirectory && <File />}
           <div key={`inode-name-${node.id}`}>{node.name}</div>
           {node.open && <INode path={`${path}${node.name}/`} />}
         </div>
