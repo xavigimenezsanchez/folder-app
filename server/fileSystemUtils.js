@@ -4,11 +4,10 @@ const __dirname = resolve();
 var exposedFileSystem = join(__dirname, "exposedFileSystem");
 
 export const dir = (req, res) => {
-  if (!req?.body?.path)
-    return res.status(404).send({ error: "not body or path property" });
+  if (!req?.query?.path)
+    return res.status(404).send({ error: "not query or path property" });
 
-  var fileSystemPath = join(exposedFileSystem, req.body.path);
-
+  var fileSystemPath = join(exposedFileSystem, req.query.path);
   readdir(fileSystemPath, (err, files) => {
     if (err) res.status(404).send({ error: err.code });
     else {
@@ -25,10 +24,10 @@ export const dir = (req, res) => {
 };
 
 export const getFile = (req, res) => {
-  if (!req?.body?.path)
-    return res.status(404).send({ error: "not body or path property" });
+  if (!req?.query?.path)
+    return res.status(404).send({ error: "not query or path property" });
 
-  var filePath = join(exposedFileSystem, req.body.path);
+  var filePath = join(exposedFileSystem, req.query.path);
 
   return res.sendFile(filePath);
 };

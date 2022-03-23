@@ -2,7 +2,7 @@ import { join, resolve } from "path";
 import express from "express";
 import { dir, getFile } from "./fileSystemUtils.js";
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3100;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
