@@ -24,7 +24,9 @@ const App = () => {
           updatePreview={updatePreview}
         />
       )}
-      {preview.showPreview && <Preview updatePreview={updatePreview} />}
+      {preview.showPreview && (
+        <Preview src={preview.path} updatePreview={updatePreview} />
+      )}
       <INode path={path}></INode>
     </div>
   );

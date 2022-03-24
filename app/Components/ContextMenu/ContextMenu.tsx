@@ -1,4 +1,5 @@
 import { isImage, isText } from "../../utils";
+import fileName from "../../utils/filename";
 
 interface IContextMenu {
   xPos: string;
@@ -9,17 +10,16 @@ interface IContextMenu {
 
 const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
   const inodePath = target.getAttribute("inode-path");
-  const fileName = inodePath.substring(inodePath.lastIndexOf("/") + 1);
-  // const preview = isImage(fileName) || isText(fileName);
-
+  const previewActive = isText(inodePath) || isImage(inodePath);
   return (
     <>
       <div>
-        <a href={`/api/get?path=${inodePath}`} download={fileName}>
+        <a href={`/api/get?path=${inodePath}`} download={fileName(inodePath)}>
           Download
         </a>
       </div>
       <div
+        className={previewActive ? "active" : "disabled"}
         onClick={() => updatePreview({ showPreview: true, path: inodePath })}
       >
         Preview
