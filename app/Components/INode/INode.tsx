@@ -37,6 +37,7 @@ const INode = ({ path }: IINode) => {
       {children.map((node, index) => (
         <div
           key={`inode-${node.id}`}
+          inode-path={path + (!node.isDirectory ? node.name : "")}
           className={getClassName(node.isDirectory)}
           onClick={(event: MouseEvent<HTMLInputElement>) =>
             toggleFolder(index, event)

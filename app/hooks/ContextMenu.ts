@@ -1,39 +1,45 @@
-import { HtmlTagObject } from "html-webpack-plugin";
 import { useState, useEffect, useCallback } from "react";
 
 interface IUseContextMenu {
   xPos?: string;
   yPos?: string;
-  target?: EventTarget;
+  target?: HTMLElement;
   showMenu?: boolean;
   handleClick?: Function;
 }
 
+interface IMustBeShown {
+  mustBeShown: boolean;
+  target?: HTMLElement;
+}
 const useContextMenu = (): IUseContextMenu => {
   const [xPos, setXPos] = useState<string>("0px");
   const [yPos, setYPos] = useState<string>("0px");
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [target, setTarget] = useState<EventTarget>(null);
+  const [target, setTarget] = useState<HTMLElement>(null);
 
-  const mustBeShow = (target: HTMLElement) => {
+  const mustBeShown = (target: HTMLElement): IMustBeShown => {
     if (target && target.classList) {
       if (target.classList.contains("file")) {
-        return true;
+        return { mustBeShown: true, target };
       } else {
         if ((target?.parentNode as HTMLElement)?.classList) {
-          return mustBeShow(target.parentNode as HTMLElement);
+          return mustBeShown(target.parentNode as HTMLElement);
         }
       }
     }
-    return false;
+    return { mustBeShown: false };
   };
   const handleContextMenu = useCallback(
     (e: MouseEvent) => {
       e.preventDefault();
-      if (mustBeShow(e.target as HTMLElement)) {
+      const menuMustBeShown: IMustBeShown = mustBeShown(
+        e.target as HTMLElement
+      );
+      if (menuMustBeShown.mustBeShown) {
         setXPos(`${e.pageX}px`);
         setYPos(`${e.pageY}px`);
-        setTarget(e.target);
+        setTarget(menuMustBeShown.target);
         setShowMenu(true);
       }
     },
