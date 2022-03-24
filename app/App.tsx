@@ -3,6 +3,7 @@ import { ContextMenu } from "./Components/ContextMenu";
 import { INode } from "./Components/INode";
 import { Preview } from "./Components/Preview";
 import { IUseContextMenu, useContextMenu } from "./hooks";
+import "./app.scss";
 
 const App = () => {
   const { xPos, yPos, showMenu, target }: IUseContextMenu = useContextMenu();
@@ -14,8 +15,7 @@ const App = () => {
   }
   const updatePreview = (newPreview) => setPreview(newPreview);
   return (
-    <div>
-      Test App
+    <div className="app">
       {showMenu && (
         <ContextMenu
           xPos={xPos}
@@ -27,7 +27,15 @@ const App = () => {
       {preview.showPreview && (
         <Preview src={preview.path} updatePreview={updatePreview} />
       )}
-      <INode path={path}></INode>
+      <div className="app__container">
+        <div className="app__container--wrapper">
+          <div className="app__container__header">File Explorer</div>
+
+          <div className="app__container__body">
+            <INode path={path}></INode>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

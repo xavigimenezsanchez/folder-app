@@ -3,6 +3,7 @@ import uniqueId from "lodash.uniqueid";
 import { Arrow, File, Image, Text } from "../Icons";
 import { isImage, isText } from "../../utils";
 import * as Axios from "axios";
+import "./inode.scss";
 
 const axios = Axios.default;
 interface IINode {
@@ -30,10 +31,10 @@ const INode = ({ path }: IINode) => {
     }
   };
   const getClassName = (isDirectory: boolean): string =>
-    "inode " + (isDirectory ? "directory" : "file");
+    "inode__child " + (isDirectory ? "directory" : "file");
 
   return (
-    <div>
+    <div className="inode">
       {children.map((node, index) => (
         <div
           key={`inode-${node.id}`}
