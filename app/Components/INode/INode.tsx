@@ -14,7 +14,6 @@ const INode = ({ path }: IINode) => {
   useEffect(() => {
     axios.get(`/api/dir?path=${path}`).then((request) => {
       console.log(request.data);
-
       setChildren(
         request.data.map((node) => {
           return { ...node, id: uniqueId(path) };
