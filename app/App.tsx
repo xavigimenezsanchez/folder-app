@@ -6,7 +6,6 @@ import { IUseContextMenu, useContextMenu } from "./hooks";
 
 const App = () => {
   const { xPos, yPos, showMenu, target }: IUseContextMenu = useContextMenu();
-  //const [state, dispatch] = useReducer(reducer, initialState);
   const [preview, setPreview] = useState({ showPreview: false, path: "" });
   let path = window.location.pathname;
   //Add slash at the end if not exits

@@ -13,7 +13,6 @@ app.use(express.static(exposedFileSystem));
 app.get("/api/dir", dir);
 app.get("/api/get", getFile);
 (req, res) => dir(res, req.bodyres.send("dir" + JSON.stringify(req.body)));
-app.get("/*", (req, res) => res.send("hola"));
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
