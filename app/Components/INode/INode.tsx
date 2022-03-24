@@ -29,11 +29,15 @@ const INode = ({ path }: IINode) => {
       setChildren(childrenCopy);
     }
   };
+  const getClassName = (isDirectory: boolean): string =>
+    "inode " + (isDirectory ? "directory" : "file");
+
   return (
     <div>
       {children.map((node, index) => (
         <div
           key={`inode-${node.id}`}
+          className={getClassName(node.isDirectory)}
           onClick={(event: MouseEvent<HTMLInputElement>) =>
             toggleFolder(index, event)
           }

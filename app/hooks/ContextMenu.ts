@@ -1,3 +1,4 @@
+import { HtmlTagObject } from "html-webpack-plugin";
 import { useState, useEffect, useCallback } from "react";
 
 interface IUseContextMenu {
@@ -14,13 +15,27 @@ const useContextMenu = (): IUseContextMenu => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [target, setTarget] = useState<EventTarget>(null);
 
+  const mustBeShow = (target: HTMLElement) => {
+    if (target && target.classList) {
+      if (target.classList.contains("file")) {
+        return true;
+      } else {
+        if ((target?.parentNode as HTMLElement)?.classList) {
+          return mustBeShow(target.parentNode as HTMLElement);
+        }
+      }
+    }
+    return false;
+  };
   const handleContextMenu = useCallback(
     (e: MouseEvent) => {
       e.preventDefault();
-      setXPos(`${e.pageX}px`);
-      setYPos(`${e.pageY}px`);
-      setTarget(e.target);
-      setShowMenu(true);
+      if (mustBeShow(e.target as HTMLElement)) {
+        setXPos(`${e.pageX}px`);
+        setYPos(`${e.pageY}px`);
+        setTarget(e.target);
+        setShowMenu(true);
+      }
     },
     [setXPos, setYPos, target]
   );
