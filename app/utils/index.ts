@@ -1,3 +1,4 @@
 import isImage from "./isImage";
+import isText from "./isText";
 
-export { isImage };
+export { isImage, isText };
