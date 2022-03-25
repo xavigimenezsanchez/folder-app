@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { isImage, isText } from "../../utils";
+import "./preview.scss";
 
 interface IPreview {
   updatePreview: Function;
@@ -17,12 +18,26 @@ const Preview = ({ updatePreview, src }: IPreview) => {
       });
   }
   return (
-    <div>
-      <div onClick={() => updatePreview({ showPreview: false, path: "" })}>
-        X
+    <div className="preview">
+      <div className="preview__container">
+        <div className="preview__container__wrapper">
+          <div
+            className="preview__container__wrapper__closer"
+            onClick={() => updatePreview({ showPreview: false, path: "" })}
+          >
+            <span className="preview__container__wrapper__closer__icon">X</span>
+          </div>
+          {isImage(src) && (
+            <img
+              className="preview__container__wrapper__image"
+              src={`/api/get?path=${src}`}
+            />
+          )}
+          {isText(src) && (
+            <div className="preview__container__wrapper__text">{text}</div>
+          )}
+        </div>
       </div>
-      {isImage(src) && <img src={`/api/get?path=${src}`} />}
-      {isText(src) && <div>{text}</div>}
     </div>
   );
 };

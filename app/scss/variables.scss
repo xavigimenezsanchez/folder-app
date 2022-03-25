@@ -1,3 +1,31 @@
+// #region font-family
 $fontFamily: "Roboto", sans-serif;
 $fontColor: #fff;
-$backgroundColor: #4a627a;
+// #endregion font-family
+
+// #region palete
+$gainsboro: #d8dbe2ff;
+$light-steel-blue: #a9bcd0ff;
+$cadet-blue: #58a4b0ff;
+$charcoal: #373f51ff;
+$eerie-black: #1b1b1eff;
+// #endregion palete
+
+// #region colors
+$backgroundColor: $gainsboro;
+$explorerBackgroundColor: $eerie-black;
+$contextMenuBackgroundColor: $gainsboro;
+$contextMenuColor: $charcoal;
+$contextMenuHoverItem: $cadet-blue;
+$previewBackgroundColor: $light-steel-blue;
+$previewIconHover: $charcoal;
+$previewIconHoverColor: $light-steel-blue;
+$previewCloserBackground: $cadet-blue;
+// #endregion colors
+
+// #region icons
+$iconPading: 0 5px 0 0;
+// #endregion icons
+// #region z-index
+$maxZIndez: 9999;
+// #endregion z-indez

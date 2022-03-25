@@ -1,11 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faChevronUp,
+  faChevronDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface IArrow {
   open?: boolean;
 }
 const Arrow = ({ open = false }: IArrow) => {
-  return <FontAwesomeIcon icon={open ? faChevronDown : faChevronUp} />;
+  return (
+    <div className={"icon"}>
+      <FontAwesomeIcon icon={open ? faChevronDown : faChevronRight} />
+    </div>
+  );
 };
 
 export default Arrow;

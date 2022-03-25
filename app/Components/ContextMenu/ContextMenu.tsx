@@ -1,5 +1,6 @@
 import { isImage, isText } from "../../utils";
 import fileName from "../../utils/filename";
+import "./contextMenu.scss";
 
 interface IContextMenu {
   xPos: string;
@@ -11,20 +12,39 @@ interface IContextMenu {
 const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
   const inodePath = target.getAttribute("inode-path");
   const previewActive = isText(inodePath) || isImage(inodePath);
+
+  const position = {
+    top: yPos,
+    left: xPos,
+  };
+  const previewHandler = (): void => {
+    if (previewActive) {
+      updatePreview({ showPreview: true, path: inodePath });
+    }
+  };
   return (
-    <>
-      <div>
-        <a href={`/api/get?path=${inodePath}`} download={fileName(inodePath)}>
+    <div className="context-menu" style={position}>
+      <div className="context-menu__element">
+        <a
+          className="context-menu__element__link"
+          href={`/api/get?path=${inodePath}`}
+          download={fileName(inodePath)}
+        >
           Download
         </a>
       </div>
       <div
-        className={previewActive ? "active" : "disabled"}
-        onClick={() => updatePreview({ showPreview: true, path: inodePath })}
+        className={
+          "context-menu__element context-menu__element--" +
+          (previewActive ? "active" : "disabled")
+        }
+        onClick={previewHandler}
       >
-        Preview
+        <a className="context-menu__element__link" href="#">
+          Preview
+        </a>
       </div>
-    </>
+    </div>
   );
 };
 

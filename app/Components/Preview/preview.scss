@@ -1,0 +1,43 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.preview {
+  position: absolute;
+  z-index: $maxZIndez;
+  width: 98vw;
+  height: 98vh;
+  @include flexColumn();
+  &__container {
+    @include flexColumn();
+    background-color: $previewBackgroundColor;
+    @include columnDimensions();
+    &__wrapper {
+      @include min-maxDimensions(10%);
+      &__closer {
+        text-align: right;
+        padding: 5px 0;
+        background-color: $previewCloserBackground;
+        &__icon {
+          padding: 5px;
+          &:hover {
+            background-color: $previewIconHover;
+            color: $previewIconHoverColor;
+            cursor: pointer;
+          }
+        }
+      }
+      &__text {
+        text-align: left;
+        padding: 1em;
+        @include max-height(20%);
+        @include scrollBar();
+        overflow: auto;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+          rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+      }
+      &__image {
+        width: 100%;
+      }
+    }
+  }
+}

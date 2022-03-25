@@ -1,0 +1,47 @@
+@import "./variables.scss";
+
+@mixin flexColumn() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  flex-direction: column;
+}
+
+@mixin columnDimensions {
+  padding: 20px;
+  margin: 50px;
+  transition: 1s;
+  overflow: auto;
+  @include min-maxDimensions();
+}
+
+@mixin min-maxDimensions($reduction: 0%) {
+  min-width: calc(20px - $reduction);
+  min-height: calc(500px - $reduction);
+  width: calc(30vw - $reduction);
+  height: calc(70vw - $reduction);
+  max-width: calc(80vh - $reduction);
+  max-height: calc(80vh - $reduction);
+  @include max-height($reduction);
+}
+
+@mixin max-height($reduction: 0%) {
+  max-height: calc(80vh - $reduction);
+}
+
+@mixin scrollBar() {
+  scrollbar-width: thin;
+  scrollbar-color: $backgroundColor;
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $backgroundColor;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $charcoal;
+    border-radius: 6px;
+    border: 3px solid $charcoal;
+  }
+}
