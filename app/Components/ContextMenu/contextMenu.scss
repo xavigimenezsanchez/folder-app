@@ -10,9 +10,9 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 10px 0;
   z-index: $maxZIndez;
-
   &__element {
     border: 0;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     position: relative;
@@ -24,13 +24,22 @@
     -moz-transition: 0.5s linear;
     -ms-transition: 0.5s linear;
     -o-transition: 0.5s linear;
-    &:hover {
-      background: $contextMenuHoverItem;
+    .icon {
       color: $contextMenuColor;
     }
+    &:hover {
+      background: $contextMenuHoverItem;
+      color: $contextMenuHoverColor;
+    }
+    &--disabled {
+      &:hover {
+        background: $contextMenuBackgroundColor;
+        color: $contextMenuBackgroundColor;
+      }
+    }
+
     &__link {
-      padding: 0 10px;
-      color: #000;
+      color: $contextMenuColor;
       text-decoration: none;
       font-weight: 400;
     }

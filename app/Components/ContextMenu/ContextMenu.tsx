@@ -1,5 +1,6 @@
 import { isImage, isText } from "../../utils";
 import fileName from "../../utils/filename";
+import { Icon, IconNames } from "../Icons";
 import "./contextMenu.scss";
 
 interface IContextMenu {
@@ -25,6 +26,7 @@ const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
   return (
     <div className="context-menu" style={position}>
       <div className="context-menu__element">
+        <Icon iconName={IconNames.download} />
         <a
           className="context-menu__element__link"
           href={`/api/get?path=${inodePath}`}
@@ -40,6 +42,7 @@ const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
         }
         onClick={previewHandler}
       >
+        <Icon iconName={IconNames.preview} />
         <a className="context-menu__element__link" href="#">
           Preview
         </a>

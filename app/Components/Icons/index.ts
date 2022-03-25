@@ -1,8 +1,4 @@
-import Arrow, { IArrow } from "./Arrow";
-import File from "./File";
-import Image from "./Image";
-import Text from "./Text";
-import "./icons.scss";
+import Icon, { IconNames, IIcon } from "./Icon";
 
-export { Arrow, File, Image, Text };
-export type { IArrow };
+export { Icon, IconNames };
+export type { IIcon };

@@ -1,6 +1,6 @@
 import { useState, useEffect, MouseEvent } from "react";
 import uniqueId from "lodash.uniqueid";
-import { Arrow, File, Image, Text } from "../Icons";
+import { Icon, IconNames } from "../Icons";
 import { isImage, isText } from "../../utils";
 import * as Axios from "axios";
 import "./inode.scss";
@@ -33,6 +33,16 @@ const INode = ({ path }: IINode) => {
   const getClassName = (isDirectory: boolean): string =>
     "inode__child " + (isDirectory ? "directory" : "file");
 
+  const getIconName = (name: string): IconNames =>
+    isImage(name)
+      ? IconNames.image
+      : isText(name)
+      ? IconNames.text
+      : IconNames.file;
+
+  const getArrowIconName = (open: boolean): IconNames =>
+    open ? IconNames.arrowDown : IconNames.arrowRight;
+
   return (
     <div className="inode">
       {children.map((node, index) => (
@@ -44,15 +54,8 @@ const INode = ({ path }: IINode) => {
             toggleFolder(index, event)
           }
         >
-          {node.isDirectory && <Arrow open={node.open} />}
-          {!node.isDirectory &&
-            (isImage(node.name) ? (
-              <Image />
-            ) : isText(node.name) ? (
-              <Text />
-            ) : (
-              <File />
-            ))}
+          {node.isDirectory && <Icon iconName={getArrowIconName(node.open)} />}
+          {!node.isDirectory && <Icon iconName={getIconName(node.name)} />}
           <div key={`inode-name-${node.id}`}>{node.name}</div>
           {node.open && <INode path={`${path}${node.name}/`} />}
         </div>
