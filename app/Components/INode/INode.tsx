@@ -8,13 +8,13 @@ import "./inode.scss";
 const axios = Axios.default;
 interface IINode {
   path: string;
+  contextMenuStatus: boolean;
 }
 
-const INode = ({ path }: IINode) => {
+const INode = ({ path, contextMenuStatus }: IINode) => {
   const [children, setChildren] = useState([]);
   useEffect(() => {
     axios.get(`/api/dir?path=${path}`).then((request) => {
-      console.log(request.data);
       setChildren(
         request.data.map((node) => {
           return { ...node, id: uniqueId(path) };
@@ -24,10 +24,13 @@ const INode = ({ path }: IINode) => {
   }, []);
   const toggleFolder = (index: number, event: MouseEvent<HTMLInputElement>) => {
     event.stopPropagation();
-    if (children[index].isDirectory) {
-      const childrenCopy = [...children];
-      childrenCopy[index].open = !childrenCopy[index].open;
-      setChildren(childrenCopy);
+    if (!contextMenuStatus) {
+      // If context menu is open a folder must be not toggled
+      if (children[index].isDirectory) {
+        const childrenCopy = [...children];
+        childrenCopy[index].open = !childrenCopy[index].open;
+        setChildren(childrenCopy);
+      }
     }
   };
   const getClassName = (isDirectory: boolean): string =>
@@ -57,7 +60,12 @@ const INode = ({ path }: IINode) => {
           {node.isDirectory && <Icon iconName={getArrowIconName(node.open)} />}
           {!node.isDirectory && <Icon iconName={getIconName(node.name)} />}
           <div key={`inode-name-${node.id}`}>{node.name}</div>
-          {node.open && <INode path={`${path}${node.name}/`} />}
+          {node.open && (
+            <INode
+              path={`${path}${node.name}/`}
+              contextMenuStatus={contextMenuStatus}
+            />
+          )}
         </div>
       ))}
     </div>

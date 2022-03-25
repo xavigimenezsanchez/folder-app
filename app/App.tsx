@@ -32,7 +32,7 @@ const App = () => {
           <div className="app__container__header">File Explorer</div>
 
           <div className="app__container__body">
-            <INode path={path}></INode>
+            <INode path={path} contextMenuStatus={showMenu}></INode>
           </div>
         </div>
       </div>
