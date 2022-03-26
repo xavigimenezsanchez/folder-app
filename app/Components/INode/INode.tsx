@@ -52,6 +52,7 @@ const INode = ({ path, contextMenuStatus }: IINode) => {
       {children.map((node, index) => (
         <div
           key={`inode-${node.id}`}
+          data-testid="inode-child"
           inode-path={path + (!node.isDirectory ? node.name : "")}
           className={getClassName(node.isDirectory)}
           onClick={(event: MouseEvent<HTMLInputElement>) =>
