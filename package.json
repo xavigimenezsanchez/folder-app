@@ -13,6 +13,11 @@
     "start:dev": "nodemon server/index.js & set NODE_OPTIONS=--openssl-legacy-provider&& webpack-dev-server --config webpack.dev.js",
     "test": "jest"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "author": "Xavi Giménez Sánchez",
   "license": "ISC",
   "dependencies": {
@@ -35,6 +40,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.0",
+    "@testing-library/react": "^12.1.4",
     "@types/jest": "^27.4.1",
     "@types/react-router-dom": "^5.3.2",
     "babel-jest": "^27.5.1",
@@ -46,6 +52,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "prettier": "^2.6.1",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",

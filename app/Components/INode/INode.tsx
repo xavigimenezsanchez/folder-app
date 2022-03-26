@@ -2,26 +2,27 @@ import { useState, useEffect, MouseEvent } from "react";
 import uniqueId from "lodash.uniqueid";
 import { Icon, IconNames } from "../Icons";
 import { isImage, isText } from "../../utils";
-import * as Axios from "axios";
+import Axios from "axios";
 import "./inode.scss";
+import { useCallback } from "react";
 
-const axios = Axios.default;
 interface IINode {
   path: string;
   contextMenuStatus: boolean;
 }
-
 const INode = ({ path, contextMenuStatus }: IINode) => {
   const [children, setChildren] = useState([]);
+  const getINodes = useCallback(async () => {
+    const request = await Axios.get(`/api/dir?path=${path}`);
+    const formatInodes = request.data.map((node) => ({
+      ...node,
+      id: uniqueId(path),
+    }));
+    setChildren(formatInodes);
+  }, [path]);
   useEffect(() => {
-    axios.get(`/api/dir?path=${path}`).then((request) => {
-      setChildren(
-        request.data.map((node) => {
-          return { ...node, id: uniqueId(path) };
-        })
-      );
-    });
-  }, []);
+    getINodes();
+  }, [getINodes]);
   const toggleFolder = (index: number, event: MouseEvent<HTMLInputElement>) => {
     event.stopPropagation();
     if (!contextMenuStatus) {

@@ -33,7 +33,7 @@ const iconNameDictionary: { [key in IconNames]: any } = {
   [IconNames.preview]: faMagnifyingGlass,
 };
 const Icon = ({ iconName }: IIcon) => (
-  <div className="icon">
+  <div data-testid="icon" className="icon">
     <FontAwesomeIcon icon={iconNameDictionary[iconName]} />
   </div>
 );

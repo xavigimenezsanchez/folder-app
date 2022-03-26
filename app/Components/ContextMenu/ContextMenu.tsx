@@ -24,7 +24,7 @@ const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
     }
   };
   return (
-    <div className="context-menu" style={position}>
+    <div role="contextmenu" className="context-menu" style={position}>
       <div className="context-menu__element">
         <Icon iconName={IconNames.download} />
         <a
@@ -43,9 +43,7 @@ const ContextMenu = ({ xPos, yPos, target, updatePreview }: IContextMenu) => {
         onClick={previewHandler}
       >
         <Icon iconName={IconNames.preview} />
-        <a className="context-menu__element__link" href="#">
-          Preview
-        </a>
+        <a className="context-menu__element__link">Preview</a>
       </div>
     </div>
   );
