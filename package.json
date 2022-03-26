@@ -20,7 +20,10 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "e2e"
+    ]
   },
   "author": "Xavi Giménez Sánchez",
   "license": "ISC",
