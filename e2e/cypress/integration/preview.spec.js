@@ -1,9 +1,8 @@
 /// <reference types="cypress" />
 
 describe("Preview", () => {
-  const fileNames = ["generic.abc", "image.png", "text.txt"];
   beforeEach(() => {
-    cy.visit("http://localhost:3001/folder1");
+    cy.visit(`${Cypress.env("url")}/folder1`);
   });
   it("a text", () => {
     cy.get('[inode-path="/folder1/text.txt"] > :nth-child(2)').rightclick();

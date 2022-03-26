@@ -4,7 +4,7 @@ describe("Node collapsing", () => {
   const fileNames = ["generic.abc", "image.png", "text.txt"];
 
   beforeEach(() => {
-    cy.visit("http://localhost:3001/");
+    cy.visit(Cypress.env("url"));
   });
 
   it("Open folder with file content", () => {

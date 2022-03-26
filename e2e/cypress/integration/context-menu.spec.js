@@ -4,7 +4,7 @@ describe("contextMenu", () => {
   const fileNames = ["generic.abc", "image.png", "text.txt"];
 
   beforeEach(() => {
-    cy.visit("http://localhost:3001/");
+    cy.visit(Cypress.env("url"));
   });
 
   it("not show when right click on folder", () => {
