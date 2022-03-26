@@ -10,7 +10,11 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "start:dev": "nodemon server/index.js & set NODE_OPTIONS=--openssl-legacy-provider&& webpack-dev-server --config webpack.dev.js",
+    "dev": "concurrently npm:start:dev*",
+    "start:devServer": "nodemon server/index.js",
+    "start:devApp": "set NODE_OPTIONS=--openssl-legacy-provider&& webpack-dev-server --config webpack.dev.js",
+    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && webpack-cli build  --config webpack.prod.js",
+    "build:local": "set NODE_OPTIONS=--openssl-legacy-provider&& webpack-cli build  --config webpack.prod.js",
     "test": "jest"
   },
   "jest": {
@@ -46,6 +50,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
     "babel-plugin-macros": "^3.1.0",
+    "concurrently": "^7.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.5.1",
     "cypress": "^9.5.2",
