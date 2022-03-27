@@ -1,7 +1,9 @@
 .inode {
   position: relative;
   top: 1em;
-
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
   &__child {
     display: flex;
     margin: 0.5em;
