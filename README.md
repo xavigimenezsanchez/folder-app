@@ -48,7 +48,7 @@ To download or preview a file use the mouse right click over the file or the kee
   ```
 - Build the app
   ```
-  npm run build
+  npm run build:local
   ```
 - Run the server
   ```
