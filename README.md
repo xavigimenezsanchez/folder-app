@@ -10,9 +10,7 @@ For changing the root folder you must be put the name of the folder or folders i
 https://folderappxg.herokuapp.com/folder3
 ```
 
-To download or preview a file use the mouse righ click over the file
-
-**Warning**: This page was not tested for a mobile or tablet devices.
+To download or preview a file use the mouse right click over the file
 
 ## Run app locally
 
@@ -42,8 +40,6 @@ To download or preview a file use the mouse righ click over the file
 
 ## Testing
 
-There are only a test for the INode component.
-
 - Run jest tests
 
   ```
@@ -57,7 +53,7 @@ There are only a test for the INode component.
 
 ## End to End tests
 
-Cypress is used for the e2e tests. The version installed [here](https://folderappxg.herokuapp.com/) is the oan that sill be used for the e2e tests
+Cypress is used for the e2e tests. The version installed [here](https://folderappxg.herokuapp.com/) is the one that will be used for the e2e tests
 
 ### Run locally
 
