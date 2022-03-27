@@ -9,6 +9,7 @@ const App = () => {
   const { xPos, yPos, showMenu, target }: IUseContextMenu = useContextMenu();
   const [preview, setPreview] = useState({ showPreview: false, path: "" });
   let path = window.location.pathname;
+
   //Add slash at the end if not exits
   if (path[path.length - 1] !== "/") {
     path += "/";

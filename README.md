@@ -10,7 +10,24 @@ For changing the root folder you must be put the name of the folder or folders i
 https://folderappxg.herokuapp.com/folder3
 ```
 
-To download or preview a file use the mouse right click over the file
+To download or preview a file use the mouse right click over the file or the keep touching the file in a mobile device.
+
+## Code structure
+
+- app: front end code
+
+  - Components
+    - ContextMenu: Contex menu to download or preview a file
+    - Icons: differents icons used in the app
+    - Inode: show every folder or file
+    - Preview: show the image or text from a file
+  - hooks
+  - scss: used BEM CSS methodology
+  - utils
+
+- server: server code
+- exposedFileSystem: filesystem exposed from a nodejs
+- e2e: end to end test with cypress
 
 ## Run app locally
 

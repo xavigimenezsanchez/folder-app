@@ -7,8 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const __dirname = resolve();
-// var exposedFileSystem = join(__dirname, "exposedFileSystem");
-// app.use(express.static(exposedFileSystem));
 
 var staticPath = join(__dirname, "server/public/dist");
 app.use(express.static(staticPath));
