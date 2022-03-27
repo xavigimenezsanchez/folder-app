@@ -6,6 +6,8 @@
   font-size: 1em;
   font-family: $fontFamily;
   background: $backgroundColor;
+  width: 100vw;
+  height: 100vh;
   &__container {
     scrollbar-width: thin;
     scrollbar-color: red;
@@ -17,8 +19,8 @@
       border-radius: 6px;
       border: 3px solid red;
     }
-    width: 98vw;
-    height: 98vh;
+    width: 100vw;
+    height: 100vh;
     @include flexColumn();
     &--wrapper {
       background: $explorerBackgroundColor;
