@@ -22,42 +22,31 @@
 
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) {
-    min-width: calc(20px - $reduction);
     width: calc(65vw - $reduction);
     height: calc(85vh - $reduction);
-    max-width: calc(80vw - $reduction);
     max-height: calc(85vh - $reduction);
-    @include max-height($reduction);
+    min-width: calc(20px - $reduction);
+    max-width: calc(80vw - $reduction);
   }
   /* Medium devices (tablets, 768px and up) */
   @media (min-width: 768px) {
-    min-width: calc(20px - $reduction);
     min-height: calc(500px - $reduction);
     width: calc(50vw - $reduction);
     height: calc(90vh - $reduction);
-    max-width: calc(80vh - $reduction);
     max-height: calc(80vh - $reduction);
     @include max-height($reduction);
   }
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
-    min-width: calc(20px - $reduction);
     min-height: calc(500px - $reduction);
     width: calc(40vw - $reduction);
     height: calc(80vh - $reduction);
-    max-width: calc(80vh - $reduction);
-    max-height: calc(80vh - $reduction);
-    @include max-height($reduction);
   }
   /* XX-Large devices (larger desktops, 1400px and up)*/
   @media (min-width: 1400px) {
-    min-width: calc(20px - $reduction);
     min-height: calc(500px - $reduction);
     width: calc(40vw - $reduction);
     height: calc(70vh - $reduction);
-    max-width: calc(80vh - $reduction);
-    max-height: calc(80vh - $reduction);
-    @include max-height($reduction);
   }
 }
 
