@@ -34,7 +34,6 @@ export default {
           {
             loader: "sass-loader",
             options: {
-              // Prefer `dart-sass`
               implementation: sass,
             },
           },
@@ -44,10 +43,6 @@ export default {
         test: /\.(png|svg)$/i,
         use: ["url-loader"],
       },
-      // {
-      //   test: /\.(eot|ttf|woff)$/i,
-      //   use: ["file-loader"],
-      // },
     ],
   },
   plugins: [
