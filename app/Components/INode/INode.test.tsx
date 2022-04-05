@@ -36,11 +36,14 @@ describe("INode", () => {
         },
       ];
       Axios.setFileStructure(filesStructure);
-      iNode = render(<INode path="/" contextMenuStatus={false}></INode>);
+      act(() => {
+        render(<INode path="/" contextMenuStatus={false}></INode>);
+      });
+      await waitFor(() => screen.findAllByTestId("icon"));
     });
     it("INode render folders names", async () => {
-      expect(iNode.getByText(filesStructure[0].name));
-      expect(iNode.getByText(filesStructure[1].name));
+      expect(screen.getByText(filesStructure[0].name));
+      expect(screen.getByText(filesStructure[1].name));
     });
     it("INode render an icon for each folder", async () => {
       const directoryIcons = await screen.findAllByTestId("icon");
@@ -51,7 +54,9 @@ describe("INode", () => {
       expect(directoryIcons.length).toBe(filesStructure.length);
     });
     it("render a different icon when a inode is clicked", async () => {
-      fireEvent.click(iNode.getByText(filesStructure[0].name));
+      await waitFor(() =>
+        fireEvent.click(screen.getByText(filesStructure[0].name))
+      );
       const directoryIconsClose = document.querySelectorAll(
         "svg.fa-chevron-right"
       );
@@ -59,7 +64,7 @@ describe("INode", () => {
         "svg.fa-chevron-down"
       );
       expect(directoryIconsClose.length).toBe(filesStructure.length - 1);
-      expect(directoryIconsOpen.length).toBe(filesStructure.length - 1);
+      expect(directoryIconsOpen.length).toBe(1);
     });
   });
 
@@ -83,12 +88,15 @@ describe("INode", () => {
         },
       ];
       Axios.setFileStructure(filesStructure);
-      iNode = render(<INode path="/" contextMenuStatus={false}></INode>);
+      act(() => {
+        iNode = render(<INode path="/" contextMenuStatus={false}></INode>);
+      });
+      await waitFor(() => screen.findAllByTestId("icon"));
     });
     it("INode render file names", async () => {
-      expect(iNode.getByText(filesStructure[0].name));
-      expect(iNode.getByText(filesStructure[1].name));
-      expect(iNode.getByText(filesStructure[2].name));
+      expect(screen.getByText(filesStructure[0].name));
+      expect(screen.getByText(filesStructure[1].name));
+      expect(screen.getByText(filesStructure[2].name));
     });
     it("INode render an icon for each file", async () => {
       const directoryIcons = await screen.findAllByTestId("icon");

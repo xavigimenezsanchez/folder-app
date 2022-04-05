@@ -11,9 +11,10 @@ let filesStructure = [
   },
 ];
 const Axios = {
-  get: () =>
+  get: (path: string) =>
     new Promise((resolve, reject) => {
-      resolve({ data: filesStructure });
+      const data = path === "/api/dir?path=/" ? filesStructure : [];
+      resolve({ data });
     }),
   getFileStructure: () => filesStructure,
   setFileStructure: (files) => {

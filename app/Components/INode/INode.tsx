@@ -12,17 +12,17 @@ interface IINode {
 }
 const INode = ({ path, contextMenuStatus }: IINode) => {
   const [children, setChildren] = useState([]);
-  const getINodes = useCallback(async () => {
+  const getINodes = async () => {
     const request = await Axios.get(`/api/dir?path=${path}`);
     const formatInodes = request.data.map((node) => ({
       ...node,
       id: uniqueId(path),
     }));
     setChildren(formatInodes);
-  }, [path]);
+  };
   useEffect(() => {
     getINodes();
-  }, [getINodes]);
+  }, []);
   const toggleFolder = (index: number, event: MouseEvent<HTMLInputElement>) => {
     event.stopPropagation();
     if (!contextMenuStatus) {
